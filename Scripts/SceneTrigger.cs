@@ -3,10 +3,11 @@ using System;
 
 public class SceneTrigger : Area2D
 {
-    [Export] private PackedScene _sceneToTransitionTo;
+    [Export] private string _scenePath;
 
-    private void _on_SceneTrigger_body_entered(OverworldActor actor)
+    private void _on_SceneTrigger_body_entered(Node body)
     {
-        GetTree().ChangeSceneTo(_sceneToTransitionTo);
+        if (body is OverworldActor)
+            SceneChanger.ChangeScene(_scenePath);
     }
 }

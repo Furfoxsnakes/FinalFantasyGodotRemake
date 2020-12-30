@@ -1,9 +1,11 @@
 using Godot;
 using System;
+using FinalFantasyRemake.Scripts.Enums;
 
 public class Game : Node
 {
-    // Called when the node enters the scene tree for the first time.
+    public static OverworldState OverworldState = OverworldState.IDLE;
+    
     public override void _Ready()
     {
         

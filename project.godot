@@ -16,8 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Final Fantasy Remake"
-run/main_scene="res://Scenes/Corneria.tscn"
+run/main_scene="res://Scenes/Overworld.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://Game.tscn"
+SceneChanger="*res://Nodes/SceneChanger.tscn"
 
 [display]
 
@@ -48,6 +53,11 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_6=false
+2d_render/Tilemap=false
 
 [rendering]
 

@@ -2,10 +2,11 @@
 
 [ext_resource path="res://Tilesets/Corneria.tres" type="TileSet" id=1]
 [ext_resource path="res://Nodes/SceneTrigger.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Overworld.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Audio/04_-_Final_Fantasy_-_NES_-_Town.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Nodes/OverworldActor.tscn" type="PackedScene" id=4]
 
-[node name="Map" type="TileMap"]
+[node name="Corneria" type="TileMap"]
+z_as_relative = false
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -14,17 +15,21 @@ tile_data = PoolIntArray( -720912, 6, 0, -720911, 5, 0, -720910, 5, 0, -720909, 
 [node name="SpawnPoint" type="Position2D" parent="."]
 position = Vector2( 0, 176 )
 
+[node name="OverworldActor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 176 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
 [node name="SceneTrigger" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 192 )
-_sceneToTransitionTo = ExtResource( 3 )
+_scenePath = "res://Scenes/Overworld.tscn"
 
 [node name="SceneTrigger2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 256, 0 )
-_sceneToTransitionTo = ExtResource( 3 )
+_scenePath = "res://Scenes/Overworld.tscn"
 
 [node name="SceneTrigger3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -208 )
-_sceneToTransitionTo = ExtResource( 3 )
-
-[node name="OverworldActor" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 176 )
+_scenePath = "res://Scenes/Overworld.tscn"
