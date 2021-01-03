@@ -4,6 +4,7 @@
     {
         IDLE,
         MOVING,
-        TRANSITIONING
+        TRANSITIONING,
+        DIALOG
     }
 }
