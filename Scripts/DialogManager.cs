@@ -4,38 +4,23 @@ using FinalFantasyRemake.Scripts.Enums;
 
 public class DialogManager : CanvasLayer
 {
-    [Export] private AudioStreamSample _textUpAudio;
-    [Export] private AudioStreamSample _textDownAudio;
-
-    private static AnimationPlayer _anim;
-    private static RichTextLabel _text;
+    private DialogPanel _dialogPanel;
 
     public static bool IsShown = false;
 
     public override void _Ready()
     {
-        _anim = GetNode<AnimationPlayer>("Anim");
-        _text = GetNode<RichTextLabel>("Container/MarginContainer/Text");
-        GetNode<Control>("Container").RectSize = new Vector2(192, 0);
+        _dialogPanel = GetNode<DialogPanel>("DialogPanel");
     }
 
-    public static void Show(string dialog)
+    public void Show(string dialog)
     {
-        Game.OverworldPlayer.State = OverworldState.DIALOG;
-        _text.Text = dialog;
-        _anim.Play("Show");
-        IsShown = true;
+        _dialogPanel.Show(dialog);
+        Game.OverworldState = OverworldState.DIALOG;
     }
 
-    public static void Hide()
+    public void Hide()
     {
-        _anim.Play("Hide");
-        IsShown = false;
-    }
-
-    private void _on_animation_finished(string animName)
-    {
-        if (animName != "Hide") return;
-        Game.OverworldPlayer.State = OverworldState.IDLE;
+        _dialogPanel.Hide();
     }
 }
